@@ -12,15 +12,8 @@ export const menuData: MenuData = {
             ],
         },
         {
-            label: "Log",
-            path: "/log",
-            children: [
-                { label: "Markup", path: "/log/markup" },
-                { label: "Frontend", path: "/log/frontend" },
-                { label: "Animation & Visualization", path: "/log/animation-visualization" },
-                { label: "Performance & Architecture", path: "/log/performance-architecture" },
-                { label: "Workflow & Tools", path: "/log/workflow-tools" },
-            ],
+            label: "Logs",
+            path: "/logs",
         },
         {
             label: "Labs",
