@@ -1,5 +1,7 @@
 import { getPost, getPosts } from "@/lib/posts";
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -34,8 +36,10 @@ export default async function PostPage({ params }: Props) {
             </div>
           )}
         </header>
-        <div>
-          <pre>{post.content}</pre>
+        <div className="markdown-content">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {post.content}
+          </ReactMarkdown>
         </div>
       </article>
     </div>
