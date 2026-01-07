@@ -10,8 +10,6 @@ interface LogsClientProps {
 }
 
 export default function LogsClient({ posts }: LogsClientProps) {
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-
   // 모든 포스트에서 고유한 태그들을 추출
   const allTags = useMemo(() => {
     const tagsSet = new Set<string>();
@@ -20,6 +18,8 @@ export default function LogsClient({ posts }: LogsClientProps) {
     });
     return Array.from(tagsSet).sort();
   }, [posts]);
+
+  const [selectedTags, setSelectedTags] = useState<string[]>(allTags);
 
   // 선택된 태그로 필터링된 포스트 목록 (OR 조건)
   const filteredPosts = useMemo(() => {
