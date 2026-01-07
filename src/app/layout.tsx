@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: "yoonhr's devlog",
     description: "A developer's journal sharing insights, tutorials, and experiences in coding and technology.",
+    icons: {
+        icon: "/favicon.svg",
+    },
 };
 
 export default function RootLayout({

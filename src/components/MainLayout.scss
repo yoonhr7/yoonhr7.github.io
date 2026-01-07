@@ -1,4 +1,51 @@
 .main-layout {
-  padding-top: 6rem; // header height
-  min-height: 100vh;
+  min-height: 100vh; padding-top: 5rem;
+}
+
+.header {
+  position: fixed; top: 0; left: 0; z-index: 999; width: 100%; color: #222222; background-color: #fafafa;
+
+  &__container {
+    max-width: 120rem; padding: 0 2rem; margin: 0 auto;
+  }
+
+  &__nav {
+    display: flex; align-items: center; gap: 2rem; height: 5rem;
+  }
+
+  &__logo {
+    font-size: 1.2rem; font-weight: 700; text-decoration: none; color: #222222; transition: color 200ms ease;
+  }
+
+  &__menu {
+    display: flex; gap: 1rem; list-style: none;
+  }
+
+  &__menu-item {
+    position: relative;
+  }
+
+  &__menu-link {
+    display: block; padding: 0.8rem; font-size: 1.2rem; font-weight: 500; text-decoration: none; transition: color 200ms ease;
+
+    &:hover {
+      color: #888;
+    }
+  }
+
+  &__submenu {
+    position: absolute; top: 100%; left: 0; overflow: hidden; min-width: 16rem; border-radius: 0.8rem; list-style: none; background-color: #fbfbfb;
+  }
+
+  &__submenu-item {
+    // 서브메뉴 아이템 스타일
+  }
+
+  &__submenu-link {
+    display: block; padding: 1rem 1.2rem; font-size: 1.2rem; text-decoration: none; transition: background-color 200ms ease;
+
+    &:hover {
+      color: #666;
+    }
+  }
 }

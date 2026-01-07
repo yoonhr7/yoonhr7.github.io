@@ -7,13 +7,18 @@
 
 /* Root */
 
+html,
+body {
+  width: 100%; height: 100%;
+}
+
 html {
   /* 16px */
   font-size: 100%;
 }
 
 body {
-  margin: 0; font-family: var(--font-family-base); font-size: 1rem; line-height: 1.6; color: #111; background-color: #fff;
+  margin: 0; font-family: var(--font-family-base); font-size: 1rem; line-height: 1.5;
 }
 
 /* Box Model */
@@ -21,7 +26,7 @@ body {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: border-box; padding: 0; margin: 0;
 }
 
 /* Media */
