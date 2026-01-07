@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YOONHR's Devlog
 
-## Getting Started
+개발자의 기록과 실험을 담은 개인 블로그입니다.
 
-First, run the development server:
+## 프로젝트 소개
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Next.js 기반의 개인 블로그로, 마크다운 파일을 통해 콘텐츠를 관리하며 태그 필터링 기능을 제공합니다.
+
+## 메뉴 구성
+
+- **Home** (`/`) - 메인 페이지
+- **About** (`/about`) - 소개 페이지
+- **Logs** (`/logs`) - 블로그 글 목록 (태그 필터링 기능)
+- **Labs** (`/labs`) - 실험 및 프로젝트
+
+## 기술 스택
+
+### Core
+
+- **Next.js 16.1.1** - React 기반 풀스택 프레임워크
+- **React 19.2.3** - UI 라이브러리
+- **TypeScript 5** - 타입 안전성
+
+### Styling
+
+- **SCSS/Sass 1.97.2** - CSS 전처리기
+
+### Markdown & Content
+
+- **gray-matter 4.0.3** - 마크다운 frontmatter 파싱
+- **react-markdown 10.1.0** - 마크다운을 React 컴포넌트로 렌더링
+- **remark-gfm 4.0.1** - GitHub Flavored Markdown 지원 (테이블, 체크박스 등)
+- **rehype-raw 7.0.0** - 마크다운 내 HTML 태그 지원
+
+### UI & Icons
+
+- **lucide-react 0.562.0** - 아이콘 라이브러리
+
+### Code Quality
+
+- **ESLint 9** - 코드 린팅
+- **Prettier 3.7.4** - 코드 포맷팅
+- **eslint-config-prettier 10.1.8** - ESLint와 Prettier 통합
+
+## 블로그 글 작성
+
+### 마크다운 파일 형식
+
+```markdown
+---
+title: "글 제목"
+date: "2024-01-07"
+description: "글 설명"
+tags: ["태그1", "태그2"]
+---
+
+# 본문 내용
+
+마크다운 문법을 사용하여 작성...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 프로젝트 구조
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/              # Next.js App Router 페이지
+│   ├── about/       # About 페이지
+│   ├── labs/        # Labs 페이지
+│   └── logs/        # Logs 목록 및 상세 페이지
+├── components/      # 재사용 컴포넌트
+│   ├── Header.tsx   # 헤더 (메뉴)
+│   └── MainLayout.tsx
+├── data/            # 정적 데이터
+│   └── menu.ts      # 메뉴 구성
+├── lib/             # 유틸리티 함수
+│   └── posts.ts     # 마크다운 파일 처리
+├── styles/          # 전역 스타일
+└── types/           # TypeScript 타입 정의
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+posts/               # 블로그 마크다운 파일
+```
 
-## Learn More
+## 주요 기능
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 마크다운 기반 블로그 시스템
+- 태그 기반 필터링 (OR 조건)
+- 반응형 레이아웃
+- 페이지별 헤더 너비 조정 (Home: 120rem, 기타: 800px)
+- GitHub Flavored Markdown 지원
