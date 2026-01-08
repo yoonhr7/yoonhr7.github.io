@@ -61,9 +61,8 @@ export default function LogsClient({ posts }: LogsClientProps) {
         </h2>
         <h3 className="title-en">
           The thinking behind better experiences.
-          <br />
-          Tracing questions, decisions, and the reasoning that shaped each
-          experience.
+          <br /> Tracing questions, decisions, and the reasoning
+          <br /> that shaped each experience.
         </h3>
       </div>
 
