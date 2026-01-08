@@ -21,8 +21,8 @@ export default function Header({ isHome = false }: HeaderProps) {
   };
 
   return (
-    <header className={`header ${isHome ? "header--home" : "header--inner"}`}>
-      <div className="header__container">
+    <header className="header">
+      <div className={`header__container ${isHome ? "header-home" : "inner"}`}>
         <nav className="header__nav">
           <Link href="/" className="header__logo">
             YOONHR

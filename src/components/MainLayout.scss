@@ -14,27 +14,19 @@
   background-color: #fafafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
-  &--home {
-    .header__container {
-      max-width: 120rem;
-      padding: 0 2rem;
-      margin: 0 auto;
-    }
-  }
-
-  &--inner {
-    .header__container {
-      max-width: 800px;
-      padding: 0 2rem;
-      width: 100%;
-      margin: 0 auto;
-    }
-  }
-
   &__container {
-    max-width: 120rem;
     padding: 0 2rem;
+    width: 100%;
     margin: 0 auto;
+    &.header-home {
+      max-width: 100%;
+    }
+    &.inner {
+      max-width: 800px;
+      @media (max-width: 768px) {
+        padding: 0 1rem;
+      }
+    }
   }
 
   &__nav {

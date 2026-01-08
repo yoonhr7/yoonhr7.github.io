@@ -3,22 +3,35 @@
   padding: 0 2rem;
   margin: 0 auto;
   max-width: 800px;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 }
 
-.page-copyright {
+.page-title {
   padding-top: 4rem;
+  word-break: keep-all;
 
-  h4 {
-    margin-top: 2rem;
+  .title-kr {
+    font-size: clamp(1.4rem, 3.6vw, 2rem);
     font-weight: 700;
-    text-align: right;
+    line-height: 1.25;
   }
 
-  p {
+  .title-description {
     margin-top: 0.25rem;
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  .title-en {
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.2;
     text-align: right;
+    margin-top: 2rem;
+    color: #6b7280;
   }
 }
 
@@ -34,6 +47,7 @@
 
     .filter-actions {
       display: flex;
+      flex-shrink: 0;
 
       .action-button {
         display: flex;

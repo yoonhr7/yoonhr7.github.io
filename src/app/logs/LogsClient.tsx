@@ -50,18 +50,21 @@ export default function LogsClient({ posts }: LogsClientProps) {
 
   return (
     <div className="inner">
-      <div className="page-copyright">
-        <h3>
+      <div className="page-title">
+        <h1 className="title-kr">
+          더 나은 경험을 만들기 위한
+          <br /> 사고의 기록
+        </h1>
+        <h2 className="title-description">
+          문제를 분석하고, 질문과 판단을 거쳐 경험을 다듬어 온 과정을
+          담았습니다.
+        </h2>
+        <h3 className="title-en">
           The thinking behind better experiences.
           <br />
           Tracing questions, decisions, and the reasoning that shaped each
           experience.
         </h3>
-        <h4>더 나은 경험을 만들기 위한 사고의 기록</h4>
-        <p>
-          문제를 분석하고, 질문과 판단을 거쳐 경험을 다듬어 온 과정을
-          담았습니다.
-        </p>
       </div>
 
       {allTags.length > 0 && (
