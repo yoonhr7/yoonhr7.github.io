@@ -361,14 +361,14 @@
       position: relative;
       margin: 1.5rem 0;
       border: 1px solid #e5e7eb;
-      background: #fafafa;
       border-radius: 8px;
       overflow: hidden;
-
+      & > * {
+        background: #f3f3f3 !important;
+      }
       .code-block-header {
         display: flex;
         padding: 0.25rem 0.25rem 0.25rem 1rem;
-        background: #f7f6f5;
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #e5e7eb;
@@ -383,7 +383,7 @@
 
         .code-copy-button {
           display: flex;
-          padding: 0.25rem;
+          padding: 0.4rem;
           background: transparent;
           align-items: center;
           justify-content: center;
@@ -398,8 +398,8 @@
           }
 
           svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
           }
         }
       }

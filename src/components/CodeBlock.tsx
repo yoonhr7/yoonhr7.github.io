@@ -51,19 +51,20 @@ export default function CodeBlock({ className, children }: CodeBlockProps) {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
+              stroke="#1fc316"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="lucide lucide-check-icon lucide-check"
+              className="lucide lucide-check-check-icon lucide-check-check"
             >
-              <path d="M20 6 9 17l-5-5" />
+              <path d="M18 6 7 17l-5-5" />
+              <path d="m22 10-7.5 7.5L13 16" />
             </svg>
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
