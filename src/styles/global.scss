@@ -9,6 +9,124 @@
   }
 }
 
+// 레이아웃
+
+.main-layout {
+  min-height: 100vh;
+  padding-top: 5rem;
+  background-color: #fafafa;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  color: #222222;
+  background-color: #fafafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &__container {
+    padding: 0 2rem;
+    width: 100%;
+    margin: 0 auto;
+    transition: all 0.3s ease-in-out;
+    &.header-home {
+      max-width: 100%;
+    }
+    &.inner {
+      max-width: 800px;
+      @media (max-width: 768px) {
+        padding: 0 1rem;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 5rem;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #222222;
+    transition: color 200ms ease;
+  }
+
+  &__logo-icon {
+    animation: rotate 3s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  &__menu-item {
+    position: relative;
+  }
+
+  &__menu-link {
+    display: block;
+    padding: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 200ms ease;
+
+    &:hover {
+      color: #888;
+    }
+  }
+
+  &__submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    min-width: 16rem;
+    border-radius: 0.8rem;
+    list-style: none;
+    background-color: #fbfbfb;
+  }
+
+  &__submenu-item {
+    // 서브메뉴 아이템 스타일
+  }
+
+  &__submenu-link {
+    display: block;
+    padding: 1rem 1.2rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background-color 200ms ease;
+
+    &:hover {
+      color: #666;
+    }
+  }
+}
+
+// 서브 페이지 공통
 .page-title {
   padding-top: 4rem;
   word-break: keep-all;
@@ -35,7 +153,7 @@
   }
 }
 
-// 필터 스타일
+// 필터
 .filters {
   margin-top: 4rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -126,7 +244,7 @@
   }
 }
 
-// 포스트 목록 스타일
+// 포스트 태그
 .post-tags {
   display: flex;
   flex-wrap: wrap;
@@ -142,6 +260,7 @@
   }
 }
 
+// 포스트 목록
 .posts-list {
   padding: 0;
   list-style: none;
@@ -216,6 +335,7 @@
   }
 }
 
+// 포스트 뷰
 .post-view {
   header {
     padding: 2rem 0.75rem 1rem;

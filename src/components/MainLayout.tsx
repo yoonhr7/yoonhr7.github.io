@@ -1,8 +1,7 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
-import Header from './Header';
-import './MainLayout.scss';
+import { usePathname } from "next/navigation";
+import Header from "./Header";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -10,14 +9,12 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
 
   return (
     <>
       <Header isHome={isHome} />
-      <main className="main-layout">
-        {children}
-      </main>
+      <main className="main-layout">{children}</main>
     </>
   );
 }
