@@ -11,6 +11,8 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = getPosts();
   return posts.map((post) => ({
@@ -19,7 +21,10 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  // URL 인코딩된 slug를 디코딩
+  const slug = decodeURIComponent(rawSlug);
+
   const post = getPost(slug);
 
   if (!post) {

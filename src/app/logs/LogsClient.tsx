@@ -10,13 +10,26 @@ interface LogsClientProps {
 }
 
 export default function LogsClient({ posts }: LogsClientProps) {
+  const UNTAGGED = "Untagged";
+
   // 모든 포스트에서 고유한 태그들을 추출
   const allTags = useMemo(() => {
     const tagsSet = new Set<string>();
+    let hasUntagged = false;
+
     posts.forEach((post) => {
-      post.tags?.forEach((tag) => tagsSet.add(tag));
+      if (!post.tags || post.tags.length === 0) {
+        hasUntagged = true;
+      } else {
+        post.tags.forEach((tag) => tagsSet.add(tag));
+      }
     });
-    return Array.from(tagsSet).sort();
+
+    const tags = Array.from(tagsSet).sort();
+    if (hasUntagged) {
+      tags.push(UNTAGGED);
+    }
+    return tags;
   }, [posts]);
 
   const [selectedTags, setSelectedTags] = useState<string[]>(allTags);
@@ -26,9 +39,14 @@ export default function LogsClient({ posts }: LogsClientProps) {
     if (selectedTags.length === 0) {
       return []; // 선택된 태그가 없으면 빈 배열 반환
     }
-    return posts.filter((post) =>
-      selectedTags.some((selectedTag) => post.tags?.includes(selectedTag))
-    );
+    return posts.filter((post) => {
+      // tags가 없는 글은 "Untagged"가 선택되어 있을 때만 포함
+      if (!post.tags || post.tags.length === 0) {
+        return selectedTags.includes(UNTAGGED);
+      }
+      // tags가 있는 글은 선택된 태그와 매칭 확인
+      return selectedTags.some((selectedTag) => post.tags?.includes(selectedTag));
+    });
   }, [posts, selectedTags]);
 
   // 태그 토글 핸들러

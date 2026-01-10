@@ -1,0 +1,122 @@
+---
+title: "Claude & Blender MCP 연결하기"
+date: "2025-07-29"
+notionId: "23fa784e-4dc2-80a8-8e36-c78c5d89f8d4"
+lastEditedTime: "2026-01-10T04:21:00.000Z"
+---
+## 1. 설치
+
+- 클로드 앱 설치
+
+[bookmark](https://claude.ai/download)
+
+- 블렌더 설치
+
+[bookmark](https://www.blender.org/)
+
+- 파이썬 설치
+
+[bookmark](https://www.python.org/downloads/)
+
+
+## 2. 파이썬으로 blender-mcp 설치
+
+
+```bash
+pip install blender-mcp
+```
+
+
+## 3. Blender 설정
+
+
+[bookmark](https://github.com/ahujasid/blender-mcp#)
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/6d4804ac-d176-4f0a-afb0-aad4079dff2f/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=c1e7100ba609bcad5bef82138217761407c2b5e285858e4fd49b47c1b52f11bb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+위의 깃허브에서 zip 파일을 다운로드 후 압축을 해제한다.
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/c29aafa4-c3dc-4296-a4b2-55fc3e9ecf68/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=1de989c629e2ed1efab4ac6473eedaa1e4b71a459423582b9cc948530f19b1ab&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/de40f9d0-b05f-4213-8434-21e6bcc3181d/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=ca801df1a759ea57ae797cc8c36b34f8b3a7024c3cc6571f1adc16c140b7bc6b&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+Edit > Preferences > Add-ons > Install
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/7d031cbe-64c8-49be-a39f-1b6406f1be83/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=e0aa817d6eed15379c8fb637381df19deaf18c4fccb7f2f2d6198cb48b0a13ab&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+위에서 받은 파일에서 `addon.py` 를 찾아서 설치한다.
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/820991a5-419a-4535-95a2-22750a76752d/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=8f86841dc75f7171658f39c8d919ff2f5c5f74fecdaa303c3e238dfd983b229e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+설치 후 `Interface: Blender MCP` 를 찾아서 꼭 체크해야한다.
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/f0decea4-85a8-4a9d-8529-96efc9a8ff5a/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=d02d564d5e11e34e9812bf50f1d3e33f7f60db9a1f426872f36747096f9d075e&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+설치 후 blender 화면에서 view 화면 우측에 작은 화살표를 클릭하면 BlenderMCP 패널이 생긴 것을 볼 수 있다.
+
+
+`Connect to MCP server`를 실행한다.
+
+
+## 4. Claude MCP 서버 설정
+
+- 클로드 앱 > 설정 > 개발자 > 구성편집
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/72fed4f4-abad-431a-b45f-c8ee8de8cb2d/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=494ae6358c23b56d7aea4ee8a8903b51b323f33ec91bc8d54e64dda360a97f2f&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/0661a723-5713-4c71-8221-dc2c1405faea/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=d9ffb582dfbdf067ca7001db5cdbb5214592d477935b431569c0b05149cf4e44&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+해당 폴더가 자동으로 열리며 `claude_desktop_config.json` 파일에 포커스가 된다.
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/bba2c6c1-3407-446a-92a8-316617e8d33e/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=0151352bb642d2a3d4ec3389608f1288912d99424038695e6d3d4ca8f4b89916&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+해당 파일을 열면 {} 빈 중괄호가 있다. 아래의 코드를 작성 후 저장한다.
+
+
+```json
+{
+    "mcpServers": {
+        "blender": {
+            "command": "python",
+            "args": ["-m", "blender_mcp.server"],
+            "env": {
+                "BLENDER_EXECUTABLE": "C:\\Program Files\\Blender Foundation\\Blender 4.0\\blender.exe"
+            }
+        }
+    }
+}
+```
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/63d23a5b-c60a-4d6f-9d75-c5c0a4c78222/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=0b18977b603cdd666a204ef33ce45d6a8d4e3755345edb9d37c009ebf87fe31d&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+클로드를 위의 이미지와 같이 종료 후 다시 실행 > 설정 > 개발자 경로로 진입하면 mcp 서버 연동 성공여부를 확인할 수 있다. 안된다면 설치 경로등의 환경이 다를 수 있으니 클로드에게 물어보면서 해결하면 된다.
+
+
+## 5. Claude에 명령 실행
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/e7f9d307-431d-49e5-b0bb-156b86087193/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=d298771b931784d8e81900665ef9a63ed0d80401723aaf2d43f49126ea279b3c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+
+
+블렌더에서 MCP 서버를 실행한 상태에서 클로드 앱에서 모델링 지시를 하면 알림창이 뜨고 도구 사용을 허용하면 자동으로 모델링 해준다!
+
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/65a7a4f3-5212-474e-9cb7-2dc73b477f61/d567f556-de07-4094-8f05-e91f4d134ecc/image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB4667LSWGCGK%2F20260110%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260110T081854Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPD%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDg08S9yhH3akQxCM8RvFh8W7opXaOPSjpDLM1IT8KBIQIhAJI7Ny1MVN%2BnuiLH4GTJjofe6NHSXsj0JFRNYsumupxaKogECLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNjM3NDIzMTgzODA1IgwgnGkUQeGdVoahifUq3AOD%2FRQe9%2FwJq57kflngv1cOH2AZapztfBsOTh0naojhgAGMh84AMZsK0ZX8iDVCprH9%2FzMdDjz6QJ%2FOmXfDNhBBuwhg2%2FtjsDo%2BZiQQQQGR4Qu6ZZbnO%2BffdTon7aHaYvCX2VIvv%2Fi7l6n8Sa1aCrpQwGlLSWebh%2FDIbEhizCI2Af7DmxLYC7V6CtuhZjBDGdr0onLyJ96Ndm9uCfaFhjxYtqdffx9gizGqOlDL5DUihw%2BRXGmWpnaSIzF3sz1S%2Bs1Ke7LnAhINpKRTQtXEayomOHLy4GsqafspPGQhZMzxrIHgdEBlDN70HIQ7HknCjMyvK0AtfhxXLdDkwEhsH1Evaxwce68rCMLDI0j92KHkUiwXCUy6CotgBqdS%2BKBOkNEPuSdzePWDeybQ5gj5X2MaQriP0BN4JlQYAeQcuzG9oKcouBWtpAKvBRUkW1udRev0PNBfzaghAepQE8nyzyERAvh5%2BI%2BmPAQREbz%2FfIcA5TsOeCvflO6x6eBhipLpCNQeW%2BrSfGtNwNaiTzzd%2Bq8XZ3AX9%2FM3k1Zb%2FJucFwp40tpg6aSjewv%2BC9U95FRc6auLg8gosE5ZFLYIB0eubs4mG0VoFW0uR3Yj9qji9nWHVWqOxB73I1%2BR%2Bq5%2FGzD3jIjLBjqkAflakjQ80uK2vVpdP8%2F0QFzZu2u7BIEHqKuohmr2XOkek96IS3djtatXyArFdn3lQ7BBTK16LQdbVUBsDtlGy%2Bivwf9gCylvAZ6mlSWGfRyKGS5oLweqEvR%2FsbYzdRwCGLs1DX9MrDQSOwhCqeIPndBiOs1A3LYkGZl6gSypLLJAPkKOPtpfLuNK0iH7g5snHYp5EQXIoKF68BWkSzyHg98kfoIb&X-Amz-Signature=ae17720b8b719dd259d2962029c73c6ee7e08084d83953c12f608f346df8fb37&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+

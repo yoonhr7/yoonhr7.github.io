@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  schedule:
+    # KST 00:00, 12:00, 15:00, 18:00 = UTC 15:00, 03:00, 06:00, 09:00
+    - cron: '0 15,3,6,9 * * *'
 
 permissions:
   contents: read
@@ -33,6 +36,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Sync from Notion
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+        run: npm run sync-notion
 
       - name: Build with Next.js
         run: npm run build

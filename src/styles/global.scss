@@ -355,6 +355,7 @@
 
   .markdown-content {
     padding: 1rem 0.75rem;
+    overflow-x: hidden;
 
     // 코드블럭 래퍼 스타일링
     .code-block-wrapper {
@@ -481,12 +482,14 @@
 
     // 링크 스타일링 (북마크 스타일 - 흑백 톤)
     .markdown-link-wrapper {
-      display: inline-block;
+      display: block;
       margin: 0.25rem 0;
+      width: 100%;
     }
 
     .markdown-link {
-      display: inline-flex;
+      display: flex;
+      width: 100%;
       padding: 0.5rem 0.75rem;
       border: 1px solid rgba(0, 0, 0, 0.15);
       background: rgba(0, 0, 0, 0.03);
@@ -497,7 +500,7 @@
       color: #374151;
       text-decoration: none;
       transition: all 0.2s ease-in-out;
-      max-width: 100%;
+      box-sizing: border-box;
 
       .link-main {
         display: flex;
@@ -505,12 +508,15 @@
         flex-direction: column;
         gap: 0.25rem;
         flex: 1;
+        overflow: hidden;
 
         .link-url {
           font-size: 0.875rem;
           font-weight: 600;
           color: #1f2937;
-          word-break: break-all;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .link-description {
@@ -581,6 +587,7 @@
       border-radius: 8px;
       font-size: 0.9375rem;
       color: #374151;
+      overflow: hidden;
 
       > div:first-child {
         flex-shrink: 0;
@@ -590,9 +597,11 @@
 
       > div:last-child {
         flex: 1;
+        min-width: 0;
 
         p {
           margin: 0.25rem 0;
+          white-space: pre-line;
 
           &:first-child {
             margin-top: 0;
@@ -609,6 +618,23 @@
 
         code {
           font-size: 0.875rem;
+        }
+
+        ul,
+        ol {
+          margin: 0.5rem 0;
+
+          li {
+            margin: 0.25rem 0;
+          }
+        }
+
+        // 중첩 리스트 간격 조정
+        ul ul,
+        ul ol,
+        ol ul,
+        ol ol {
+          margin: 0.25rem 0;
         }
       }
     }
@@ -651,9 +677,8 @@
 
     // 인용구 스타일링
     blockquote {
-      padding: 1rem 1.5rem;
+      padding: 0rem 1rem;
       margin: 1.5rem 0;
-      background: rgba(0, 0, 0, 0.03);
       border-left: 4px solid #2a2a2a;
       color: #374151;
 

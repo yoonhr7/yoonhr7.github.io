@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    output: "export", // 정적 HTML로 export
+    // 개발 모드에서는 output: 'export'를 비활성화
+    ...(process.env.NODE_ENV === 'production' && { output: "export" }),
     images: {
         unoptimized: true, // GitHub Pages는 Next.js Image Optimization 미지원
     },
